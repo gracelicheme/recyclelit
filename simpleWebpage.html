@@ -3,148 +3,58 @@
 <head>
 <title>Page Title</title>
 </head>
-<body style='background-color: #EEEEEE;'>
-
-<span style='color: #003366;'>
-
-<h1>RecycleLit!</h1>
 <script>
-function main()
-{
-    let latitude;
-    let accountCheck;
-    let choice;
-    let longitude;
-    let type;
-    let weight;
-    let description;
-    let size;
-    let accountResponse = 0; 
 
-    alert("Welcome to Recycle Lit!\n");
-    
-    while (choice !== "Y" && choice !== "N")
-    {
-        choice = prompt("Would you like to submit a request?\nIf yes, type 'Y', else, type 'N'\n");
-        if (choice !== "Y" && choice !== "N")
-        {
-            alert("I'm sorry, please enter a valid response.\n");
-        }
-    }
-
-    if (choice === "N")
-    {
-        alert("Understood, have a wonderful day\n");
-        return;
-    }
-    else if (choice !== "Y")
-    {
-        alert("Error, application restarting.\n");
-        return;
-    }
-    else
-    {
-        latitude = prompt("Understood. Please enter the latitude of the location you are leaving your recycleables.\n");
-        longitude = prompt("Now, enter the longitude of the same location.\n");
-        type = prompt("Which of the following types of recycleables are you desposing of today?\nType '1' for plastics, '2' for paper, '3' for glass, '4' for metals, and '5' for multiple/all.\n");
-
-        let valid = '0';
-        while (valid === 0)
-        {
-            switch (type)
-            {
-            case '1':
-            
-                alert("You selected plastics.\n");
-                valid = 1;
-                break;
-            
-            case '2':
-
-                alert("You selected paper.\n");
-                valid = 1;
-                break;
-
-            case '3':
-
-                alert("You selected glass.\n");
-                valid = 1;
-                break;
-
-            case '4':
-
-                alert("You selected metals.\n");
-                valid = 1;
-                break;
-
-            case '5':
-
-                alert("You selected all of the above.");
-                valid = 1;
-                break;
-
-            default:
-                type = prompt("Sorry, please enter a valid value.\n");
-            }
-        }
-
-        weight = prompt("Now, please enter the approximate total weight (in pounds) of your desposables.\n");
-        while (weight < 0)
-        {
-            weight = prompt("Please enter a valid weight.\n");
-        }
-
-        size = prompt("Now, which of the following best describes the size of what you're recycling?\nType '1' for small (shoebox or smaller), '2' for medium (plastic drawers or smaller), '3' for large (anything larger)\n");
-
-        valid = 0;
-        while (valid === 0)
-        {
-            switch (size)
-            {
-            case '1':
-
-                alert("You selected small.\n");
-                valid = 1;
-                break;
-
-            case '2':
-
-                alert("You selected medium.\n");
-                valid = 1;
-                break;
-
-            case '3':
-
-                alert("You selected large.\n");
-                valid = 1;
-                break;
-
-            default:
-                size = prompt("Sorry, please enter a valid value.\n");
-
-            }
-        }
-        description = prompt("Please enter a description of the item or items/extra instructions for the pickup driver.");
-        alert("Your package info: " + "Latitude = " + latitude + " \t Longitude = " + longitude + " \t Type = " + type 
-             + " \t Weight = " + weight + " \t Description = " + description + " \t Size = " + size);
-        alert("Preparing to send your request...");
-    }
-    const obj = {'latitude': latitude, 'longitude': longitude, 'type': type, 'weight': weight, 'description': description, 'size': size};
-    fetch("https://websocketcackend.herokuapp.com/api/post/json", {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'}, 
-        body: JSON.stringify(obj)
-    })
-        .then(results => results.json())
-        .then(obj => console.log(obj));
-
+function test(){
+    console.log('CALLED FUNTIO')
+    let name = document.getElementById('YorN').value
+    alert(document.getElementById('YorN').value)
+    let 
+    return false
 }
 
-main();
 </script>
+<body style='background-color: #000000;'>
+
+<span style='color: #ff6200;'>
+
+<h1>RecycleLit!</h1>
+<form>
+    Would you like to submit a request? Enter "Y" for yes and "N" for no: 
+    <br>
+    <select name="YorN" id="YorN">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+    </select><br><br>
+    Latitude:
+    <br><input type="text" id="latitude" name="latitude"><br><br>
+    Longitude:
+    <br><input type="text" id="longitude" name="longitude"><br><br>
+    Which of the following types of recycleables are you desposing of today?
+    <br>
+    <select name="type" id="type">
+        <option value="1">Plastic</option>
+        <option value="2">Paper</option>
+        <option value="3">Glass</option>
+        <option value="4">Metal</option>
+        <option value="5">Multiple or All of the Above</option>
+    </select><br><br>
+    Now, please enter the approximate total weight (in pounds) of your desposables:
+    <br><input type="text" id="weight" name="weight"><br><br>
+    Now please select an approximate size for your trash:
+    <select>
+        <option value="1">Small (shoebox or smaller)</option>
+        <option value="2">Medium (plastic drawers or smaller)</option>
+        <option value="2">Medium (plastic drawers or smaller)</option>
+
+    </select>
+
+
+    <br><input type="submit" value="Submit" onclick= "return test()">
+</form>
 <p></p>
 
 </span>
 
 </body>
-</html>
+</html> 
