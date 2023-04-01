@@ -8,8 +8,8 @@
 function test(){
     console.log('CALLED FUNTIO')
     let YorN = document.getElementById('YorN').value
-    let latitude = document.getElementById('latitude').value
-    let longitude = document.getElementById('longitude').value
+    let lat = document.getElementById('lat').value
+    let long = document.getElementById('long').value
     let type = document.getElementById('type').value
     let weight = document.getElementById('weight').value
     let size = document.getElementById('size').value
@@ -17,8 +17,8 @@ function test(){
 
     alert("Sending your request...\n" 
             + document.getElementById('YorN').value + '\n' 
-            + document.getElementById('latitude').value + '\n'
-            + document.getElementById('longitude').value + '\n'
+            + document.getElementById('lat').value + '\n'
+            + document.getElementById('long').value + '\n'
             + document.getElementById('type').value + '\n'
             + document.getElementById('weight').value + '\n'
             + document.getElementById('size').value + '\n'
@@ -31,8 +31,8 @@ function test(){
 function main()
 {
     let YorN = document.getElementById('YorN').value
-    let latitude = document.getElementById('latitude').value
-    let longitude = document.getElementById('longitude').value
+    let lat = document.getElementById('lat').value
+    let long = document.getElementById('long').value
     let type = document.getElementById('type').value
     let weight = document.getElementById('weight').value
     let size = document.getElementById('size').value
@@ -40,7 +40,7 @@ function main()
     
     if(YorN === "Y")
     {
-    const obj = {'latitude': latitude, 'longitude': longitude, 'type': type, 'weight': weight, 'description': description, 'size': size};
+    const obj = {'lat': lat, 'long': long, 'type': type, 'weight': weight, 'description': description, 'size': size};
     fetch("https://websocketcackend.herokuapp.com/api/post/json", {
         method: 'POST',
         headers: {'Content-Type':'application/json'}, 
@@ -69,10 +69,10 @@ function main()
         <option value="Y">Yes</option>
         <option value="N">No</option>
     </select><br><br>
-    <p class = "border"> Latitude: </p>
-    <br><input type="text" id="latitude" name="latitude"><br><br>
-    <p class = "border"> Longitude: </p>
-    <br><input type="text" id="longitude" name="longitude"><br><br>
+    <p class = "border"> lat: </p>
+    <br><input type="text" id="lat" name="lat"><br><br>
+    <p class = "border"> long: </p>
+    <br><input type="text" id="long" name="long"><br><br>
     <p class = "border"> Which of the following types of recycleables are you desposing of today? </p>
     <br>
     <select name="type" id="type">
@@ -94,7 +94,7 @@ function main()
     Please enter a description of the item or items/extra instructions for the pickup driver:
     <br><input type="text" id="description" name="description"><br><br>
 
-    <br><input type="submit" value="Submit" onclick= "test(); return main(YorN, latitude, longitude, type, weight, size, description)">
+    <br><input type="submit" value="Submit" onclick= "test(); return main(YorN, lat, long, type, weight, size, description)">
     
 </form>
 <p></p>
