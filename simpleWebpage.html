@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body style='background-color: #EEEEEE;'>
+
+<span style='color: #003366;'>
+
+<h1>RecycleLit!</h1>
+<script>
+function main()
+{
+    let latitude;
+    let accountCheck;
+    let choice;
+    let longitude;
+    let type;
+    let weight;
+    let description;
+    let size;
+    let accountResponse = 0; 
+
+    alert("Welcome to Recycle Lit!\n");
+    
+    while (choice !== "Y" && choice !== "N")
+    {
+        choice = prompt("Would you like to submit a request?\nIf yes, type 'Y', else, type 'N'\n");
+        if (choice !== "Y" && choice !== "N")
+        {
+            alert("I'm sorry, please enter a valid response.\n");
+        }
+    }
+
+    if (choice === "N")
+    {
+        alert("Understood, have a wonderful day\n");
+        return;
+    }
+    else if (choice !== "Y")
+    {
+        alert("Error, application restarting.\n");
+        return;
+    }
+    else
+    {
+        latitude = prompt("Understood. Please enter the latitude of the location you are leaving your recycleables.\n");
+        longitude = prompt("Now, enter the longitude of the same location.\n");
+        type = prompt("Which of the following types of recycleables are you desposing of today?\nType '1' for plastics, '2' for paper, '3' for glass, '4' for metals, and '5' for multiple/all.\n");
+
+        let valid = '0';
+        while (valid === 0)
+        {
+            switch (type)
+            {
+            case '1':
+            
+                alert("You selected plastics.\n");
+                valid = 1;
+                break;
+            
+            case '2':
+
+                alert("You selected paper.\n");
+                valid = 1;
+                break;
+
+            case '3':
+
+                alert("You selected glass.\n");
+                valid = 1;
+                break;
+
+            case '4':
+
+                alert("You selected metals.\n");
+                valid = 1;
+                break;
+
+            case '5':
+
+                alert("You selected all of the above.");
+                valid = 1;
+                break;
+
+            default:
+                type = prompt("Sorry, please enter a valid value.\n");
+            }
+        }
+
+        weight = prompt("Now, please enter the approximate total weight (in pounds) of your desposables.\n");
+        while (weight < 0)
+        {
+            weight = prompt("Please enter a valid weight.\n");
+        }
+
+        size = prompt("Now, which of the following best describes the size of what you're recycling?\nType '1' for small (shoebox or smaller), '2' for medium (plastic drawers or smaller), '3' for large (anything larger)\n");
+
+        valid = 0;
+        while (valid === 0)
+        {
+            switch (size)
+            {
+            case '1':
+
+                alert("You selected small.\n");
+                valid = 1;
+                break;
+
+            case '2':
+
+                alert("You selected medium.\n");
+                valid = 1;
+                break;
+
+            case '3':
+
+                alert("You selected large.\n");
+                valid = 1;
+                break;
+
+            default:
+                size = prompt("Sorry, please enter a valid value.\n");
+
+            }
+        }
+        description = prompt("Please enter a description of the item or items/extra instructions for the pickup driver.");
+        alert("Your package info: " + "Latitude = " + latitude + " \t Longitude = " + longitude + " \t Type = " + type 
+             + " \t Weight = " + weight + " \t Description = " + description + " \t Size = " + size);
+        alert("Preparing to send your request...");
+    }
+    const obj = {'latitude': latitude, 'longitude': longitude, 'type': type, 'weight': weight, 'description': description, 'size': size};
+    fetch("https://websocketcackend.herokuapp.com/api/post/json", {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'}, 
+        body: JSON.stringify(obj)
+    })
+        .then(results => results.json())
+        .then(obj => console.log(obj));
+
+}
+
+main();
+</script>
+<p></p>
+
+</span>
+
+</body>
+</html>
