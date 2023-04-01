@@ -85,8 +85,14 @@ function main()
         <option value="Metal">Metal</option>
         <option value="Multiple or all of the above">Multiple or all of the above</option>
     </select><br><br>
-    <p class = "border"> Now, please enter the approximate total weight (in pounds) of your desposables: </p>
-    <br><input type="text" id="itemWeight" name="itemWeight"><br><br>
+    <p class = "border"> Now, please enter the approximate total weight (in pounds) of your desposables (Remember, a full water bottle is about a pound. A gallon of milk is about 8 pounds.): </p>
+    <br>
+    <select name="itemWeight" id="itemWeight">
+        <option value="light">Light (&lt 5 pounds)</option>
+        <option value="medium">Medium (Between 5 and 200 pounds)</option>
+        <option value="heavy">Heavy (&gt 5 pounds)</option>
+        option
+    </select><br><br>
     <p class = "border"> Now please select an approximate size for your trash: </p>
     <br>
     <select name="itemSize" id="itemSize">
