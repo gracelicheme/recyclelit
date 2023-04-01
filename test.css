@@ -1,0 +1,81 @@
+* {
+    margin: 10px;
+    padding: 0;
+    border: 1; 
+  }
+
+  p.border 
+  { border: 2px groove rgb(155, 177, 35);
+    border-style: groove;
+    border-radius: 5px; 
+    border-width: fit-content;
+    display: inline-block;}
+  
+   p.image{
+    background-image:url(rock.jpg);
+    background-position:center;
+   } 
+
+   h1.title
+   {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+   }
+   #fire
+   {
+    background: url(img_fire.gif) 0 0; 
+   }
+  
+  /* Style the body element */
+  body {
+    font-family: Papyrus, Fantasy;
+    font-size: 24px;
+    color: #ff6200;
+    background-color: #000000;
+  }
+  
+  /* Style the header element */
+  header {
+    background-color: #ccc;
+    padding: 20px;
+  }
+  
+  /* Style the navigation menu */
+  nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    margin:  100px;
+  }
+  
+  nav a:hover {
+    color: #fff;
+    background-color: #333;
+  }
+  
+  /* Style the main content area */
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  article {
+    width: 300px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  /* Style the footer element */
+  footer {
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+  }
