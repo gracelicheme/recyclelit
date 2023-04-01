@@ -10,19 +10,19 @@ function test(){
     let YorN = document.getElementById('YorN').value
     let lat = document.getElementById('lat').value
     let long = document.getElementById('long').value
-    let type = document.getElementById('type').value
-    let weight = document.getElementById('weight').value
-    let size = document.getElementById('size').value
-    let description = document.getElementById('description').value
+    let itemType = document.getElementById('itemType').value
+    let itemWeight = document.getElementById('itemWeight').value
+    let itemSize = document.getElementById('itemSize').value
+    let itemNotes = document.getElementById('itemNotes').value
 
     alert("Sending your request...\n" 
             + document.getElementById('YorN').value + '\n' 
             + document.getElementById('lat').value + '\n'
             + document.getElementById('long').value + '\n'
-            + document.getElementById('type').value + '\n'
-            + document.getElementById('weight').value + '\n'
-            + document.getElementById('size').value + '\n'
-            + document.getElementById('description').value + '\n')
+            + document.getElementById('itemType').value + '\n'
+            + document.getElementById('itemWeight').value + '\n'
+            + document.getElementById('itemSize').value + '\n'
+            + document.getElementById('itemNotes').value + '\n')
     
     return false
 }
@@ -33,14 +33,15 @@ function main()
     let YorN = document.getElementById('YorN').value
     let lat = document.getElementById('lat').value
     let long = document.getElementById('long').value
-    let type = document.getElementById('type').value
-    let weight = document.getElementById('weight').value
-    let size = document.getElementById('size').value
-    let description = document.getElementById('description').value
+    let itemName = document.getElementById('itemName').value
+    let itemType = document.getElementById('itemType').value
+    let itemWeight = document.getElementById('itemWeight').value
+    let itemSize = document.getElementById('itemSize').value
+    let itemNotes = document.getElementById('itemNotes').value
     
     if(YorN === "Y")
     {
-    const obj = {'lat': lat, 'long': long, 'type': type, 'weight': weight, 'description': description, 'size': size};
+    const obj = {'lat': lat, 'long': long, 'itemName': itemName, 'itemWeight': itemWeight, 'itemSize': itemSize, 'itemType': itemType, 'itemNotes': itemNotes};
     fetch("https://websocketcackend.herokuapp.com/api/post/json", {
         method: 'POST',
         headers: {'Content-Type':'application/json'}, 
@@ -73,28 +74,30 @@ function main()
     <br><input type="text" id="lat" name="lat"><br><br>
     <p class = "border"> Longitude: </p>
     <br><input type="text" id="long" name="long"><br><br>
+    <p class = "border"> Please enter a name for the item: </p>
+    <br><input type="text" id="itemName" name="itemName"><br><br>
     <p class = "border"> Which of the following types of recycleables are you desposing of today? </p>
     <br>
-    <select name="type" id="type">
-        <option value="1">Plastic</option>
-        <option value="2">Paper</option>
-        <option value="3">Glass</option>
-        <option value="4">Metal</option>
-        <option value="5">Multiple or All of the Above</option>
+    <select name="itemType" id="itemType">
+        <option value="Plastic">Plastic</option>
+        <option value="Paper">Paper</option>
+        <option value="Glass">Glass</option>
+        <option value="Metal">Metal</option>
+        <option value="Multiple or all of the above">Multiple or all of the above</option>
     </select><br><br>
     <p class = "border"> Now, please enter the approximate total weight (in pounds) of your desposables: </p>
-    <br><input type="text" id="weight" name="weight"><br><br>
+    <br><input type="text" id="itemWeight" name="itemWeight"><br><br>
     <p class = "border"> Now please select an approximate size for your trash: </p>
     <br>
-    <select name="size" id="size">
-        <option value="1">Small (shoebox or smaller)</option>
-        <option value="2">Medium (plastic drawers or smaller)</option>
-        <option value="3">Large (Anything larger)</option>
+    <select name="itemSize" id="itemSize">
+        <option value="Small">Small (shoebox or smaller)</option>
+        <option value="Medium">Medium (plastic drawers or smaller)</option>
+        <option value="Large">Large (Anything larger)</option>
     </select><br><br>
-    Please enter a description of the item or items/extra instructions for the pickup driver:
-    <br><input type="text" id="description" name="description"><br><br>
+    Please enter any notes about the item or items/extra instructions for the pickup driver:
+    <br><input type="text" id="itemNotes" name="itemNotes"><br><br>
 
-    <br><input type="submit" value="Submit" onclick= "test(); return main(YorN, lat, long, type, weight, size, description)">
+    <br><input type="submit" value="Submit" onclick= "test(); return main();">
     
 </form>
 <p></p>
