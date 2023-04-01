@@ -4,15 +4,56 @@
 <title>Page Title</title>
 </head>
 <script>
-
 function test(){
     console.log('CALLED FUNTIO')
-    let name = document.getElementById('YorN').value
-    alert(document.getElementById('YorN').value)
-    let 
+    let YorN = document.getElementById('YorN').value
+    let latitude = document.getElementById('latitude').value
+    let longitude = document.getElementById('longitude').value
+    let type = document.getElementById('type').value
+    let weight = document.getElementById('weight').value
+    let size = document.getElementById('size').value
+    let description = document.getElementById('description').value
+
+    alert("Sending your request...\n" 
+            + document.getElementById('YorN').value + '\n' 
+            + document.getElementById('latitude').value + '\n'
+            + document.getElementById('longitude').value + '\n'
+            + document.getElementById('type').value + '\n'
+            + document.getElementById('weight').value + '\n'
+            + document.getElementById('size').value + '\n'
+            + document.getElementById('description').value + '\n')
+    
     return false
 }
-
+</script>
+<script>
+function main()
+{
+    let YorN = document.getElementById('YorN').value
+    let latitude = document.getElementById('latitude').value
+    let longitude = document.getElementById('longitude').value
+    let type = document.getElementById('type').value
+    let weight = document.getElementById('weight').value
+    let size = document.getElementById('size').value
+    let description = document.getElementById('description').value
+    
+    if(YorN === "Y")
+    {
+    const obj = {'latitude': latitude, 'longitude': longitude, 'type': type, 'weight': weight, 'description': description, 'size': size};
+    fetch("https://websocketcackend.herokuapp.com/api/post/json", {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'}, 
+        body: JSON.stringify(obj)
+    })
+        .then(results => results.json())
+        .then(obj => console.log(obj));
+    }
+    else
+    {
+        console.log("User did not indicate yes (\"Y\")")
+    }
+    return false
+}
 </script>
 <body style='background-color: #000000;'>
 
@@ -42,15 +83,18 @@ function test(){
     Now, please enter the approximate total weight (in pounds) of your desposables:
     <br><input type="text" id="weight" name="weight"><br><br>
     Now please select an approximate size for your trash:
-    <select>
+    <br>
+    <select name="size" id="size">
         <option value="1">Small (shoebox or smaller)</option>
         <option value="2">Medium (plastic drawers or smaller)</option>
         <option value="2">Medium (plastic drawers or smaller)</option>
+        <option value="3">Large (Anything larger)</option>
+    </select><br><br>
+    Please enter a description of the item or items/extra instructions for the pickup driver:
+    <br><input type="text" id="description" name="description"><br><br>
 
-    </select>
-
-
-    <br><input type="submit" value="Submit" onclick= "return test()">
+    <br><input type="submit" value="Submit" onclick= "test(); return main(YorN, latitude, longitude, type, weight, size, description)">
+    
 </form>
 <p></p>
 
